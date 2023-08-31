@@ -9,13 +9,14 @@
 body {
   font-family: "Poppins";
 }
+
 .details {
   background: #fff;
   border-radius: 4px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
 }
 .details h4 {
   margin: 0 0 10px 0;
@@ -66,4 +67,13 @@ div.error {
 }
 input.error {
   border: 1px solid var(--error);
+}
+
+.enter-details{
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
 }
