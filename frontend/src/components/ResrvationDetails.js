@@ -28,7 +28,7 @@ const ReservationDetails = ({ reservation }) => {
     if(!user){
       return
     }
-    navigate('/update', {state: {reservation}})
+    navigate('/reservation-update', {state: {reservation}})
   }
 
   return (

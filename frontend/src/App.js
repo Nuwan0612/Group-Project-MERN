@@ -3,6 +3,8 @@ import { useAuthContext } from './hooks/useAuthContext'
 
 //pages & componments
 import Reservation from './pages/Reservation'
+import Employee from './pages/Employee'
+import EmployeeUpdate from './components/EmployeeUpdate'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Update from './components/UpdateReservation'
@@ -21,7 +23,15 @@ function App() {
             element={user ? <Reservation /> : <Navigate to="/login" />}
             />
             <Route 
-            path="/update"
+            path="/employee"
+            element={user ? <Employee /> : <Navigate to="/login" />}
+            />
+            <Route 
+            path="/employee-update"
+            element={user ? <EmployeeUpdate /> : <Navigate to="/login" />}
+            />
+            <Route 
+            path="/reservation-update"
             element={user ? <Update /> : <Navigate to="/login" />}
             />
             <Route 
