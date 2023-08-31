@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
               <hr />
             </div>
             <div className='menu'>
-              {SidebarMenu.map((menu, index) => {
+              {SidebarMenu.map((menu) => {
                 const isActive = location.pathname === menu.path
                 return (
                   <>

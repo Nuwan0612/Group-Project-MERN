@@ -9,9 +9,8 @@
 .sidebar{
     min-height: 100%;
     width: 300px;
-    border-radius: 5px;
     background-color: #1aac83;
-    box-shadow: 0 0 2px gray;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     color: white;
 }
 
@@ -23,11 +22,14 @@
 .body{
     padding: 20px;
     min-height: 110vh;
-    box-shadow: 0 0 2px gray;
+    box-shadow: inset  5px 0 8px rgba(0, 0, 0, .3);
     background: #f1f1f1;
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 50px;
+    grid-template-columns: 2.5fr 1.5fr;
+    gap: 10px;
+    background-image: url('../images/backiee-116704.jpg');
+    background-size: cover;
+    
 }
 
 .logo h6{

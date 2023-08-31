@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useReservationContext } from '../hooks/useReservationContext'
 import { useAuthContext } from '../hooks/useAuthContext'
-import '../styles/FormStyless.css'
 
 const ReservationForm = () => {
   const { dispatch } = useReservationContext()
@@ -60,8 +59,8 @@ const ReservationForm = () => {
 
 
   return(
-    <form onSubmit={handleSubmit}>
-      <h1>Reservation Details</h1>
+    <form className='enter-details' onSubmit={handleSubmit}>
+      <h1>Add new Reservation</h1>
 
       <label>First Name:</label>
       <input
