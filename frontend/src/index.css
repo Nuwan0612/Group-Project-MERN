@@ -6,7 +6,9 @@
   --primary: #1aac83;
   --error: #e7195a;
 }
-
+body {
+  font-family: "Poppins";
+}
 .details {
   background: #fff;
   border-radius: 4px;
