@@ -60,7 +60,7 @@ const ReservationForm = () => {
 
   return(
     <form className='enter-details' onSubmit={handleSubmit}>
-      <h1>Add new Reservation</h1>
+      <h2><center>Add new Reservation</center></h2>
 
       <label>First Name:</label>
       <input

@@ -44,7 +44,7 @@ const EmployeeForm = () => {
 
     return (
         <form className="enter-details" onSubmit={handleSubmit}>
-            <h3>Add new Employee</h3>
+            <h2><center>Add new Employee</center></h2>
 
             <label>Employee name:</label>
             <input 
