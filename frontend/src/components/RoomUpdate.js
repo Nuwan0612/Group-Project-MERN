@@ -40,7 +40,6 @@ const RoomUpdate = () => {
     }
     if (response.ok) {
       console.log('Room updated', json)
-     // dispatch({type: 'UPDATE_ITEM', payload: json})
       
       navigate("/room");
     }

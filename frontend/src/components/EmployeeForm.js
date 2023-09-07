@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { useEmployeeContext } from "../hooks/useEmployeeContext"
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const EmployeeForm = () => {
 
     const {dispatch} = useEmployeeContext()
+    const { user } = useAuthContext()
 
     const [name, setName] = useState('')
     const [contact, setContact] = useState('')
@@ -15,13 +17,19 @@ const EmployeeForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if(!user) {
+            setError('You must be logged in')
+            return
+        }
+
         const employee = {name, contact, job, salary}
 
         const response = await fetch('/api/employee', {
             method: 'POST',
             body: JSON.stringify(employee),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()

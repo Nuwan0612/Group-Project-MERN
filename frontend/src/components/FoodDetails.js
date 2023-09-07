@@ -1,14 +1,22 @@
 import { useFoodContext } from "../hooks/useFoodContext";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const FoodDetails = ({ food }) => {
   const { dispatch } = useFoodContext();
+  const  { user } = useAuthContext()
   const navigate = useNavigate();
 
   const handleDelete = async () => {
+    if(!user){
+      return
+    }
     
     const response = await fetch("/api/foods/" + food._id, {
-      method: "DELETE"
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
     });
     const json = await response.json();
 
@@ -18,6 +26,9 @@ const FoodDetails = ({ food }) => {
   };
 
   const handleUpdate = async () => {
+    if(!user){
+      return
+    }
     navigate("/food-update", { state: { food } });
   }
 

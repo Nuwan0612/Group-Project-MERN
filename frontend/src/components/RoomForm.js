@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { useRoomContext } from '../hooks/useRoomContext' 
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const RoomForm = () => {
   const {dispatch} = useRoomContext()
+  const { user } = useAuthContext()
   
   const [roomNo, setRoomNo] = useState('')
   const [roomType, setRoomType] = useState('')
@@ -15,13 +17,19 @@ const RoomForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    if(!user) {
+      setError('You must be logged in')
+      return
+    }
+
     const room = {roomNo, roomType, roomRates, airConditioning, roomStatus} 
     
     const response = await fetch('/api/room', {
       method: 'POST',
       body: JSON.stringify(room),
       headers: {
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     })
 

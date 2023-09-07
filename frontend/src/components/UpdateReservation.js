@@ -18,7 +18,6 @@ const UpdateForm = () => {
   const [room, setRoom] = useState(reservation.room)
   const [members, setMembers] = useState(reservation.members)
   const [error, setError] = useState(null)
-  const [emptyFields, setEmptyFields] = useState([])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -42,7 +41,6 @@ const UpdateForm = () => {
 
     if(!response.ok) {
       setError(json.error)
-      setEmptyFields(json.emptyFields)
     }
 
     if(response.ok){
@@ -59,7 +57,6 @@ const UpdateForm = () => {
           type="text"
           onChange={(e) => setFname(e.target.value)}
           placeholder={fname}
-          className={emptyFields.includes('fname') ? 'error' : ''}
         />
 
         <label>Last Name:</label>
@@ -67,7 +64,7 @@ const UpdateForm = () => {
           type="text"
           onChange={(e) => setLname(e.target.value)}
           placeholder={lname}
-          className={emptyFields.includes('lname') ? 'error' : ''}
+          
         />
 
         <label>NIC:</label>
@@ -75,7 +72,7 @@ const UpdateForm = () => {
           type="text"
           onChange={(e) => setNic(e.target.value)}
           placeholder={nic}
-          className={emptyFields.includes('nic') ? 'error' : ''}
+          
         />
 
         <label>Room Number:</label>
@@ -83,7 +80,7 @@ const UpdateForm = () => {
           type="text"
           onChange={(e) => setRoom(e.target.value)}
           placeholder={room}
-          className={emptyFields.includes('room') ? 'error' : ''}
+          
         />
 
         <label>Members:</label>
@@ -91,7 +88,7 @@ const UpdateForm = () => {
           type="number"
           onChange={(e) => setMembers(e.target.value)}
           placeholder={members}
-          className={emptyFields.includes('members') ? 'error' : ''}
+          
         />
 
         <label>Days:</label>
@@ -99,7 +96,7 @@ const UpdateForm = () => {
           type="number"
           onChange={(e) => setDays(e.target.value)}
           placeholder={days}
-          className={emptyFields.includes('days') ? 'error' : ''}
+          
         />
 
         <button className='add-button'>Submit</button>

@@ -51,7 +51,7 @@ const MachineUpdate = () => {
                 type="text"
                 onChange={(e) => setUpdatedName(e.target.value)}
                 value={name}
-                // className={emptyFields.includes('name') ? 'error' : ''}
+                
             />
 
             <label>Description:</label>
@@ -59,7 +59,7 @@ const MachineUpdate = () => {
                 type="text"
                 onChange={(e) => setUpdatedDescription(e.target.value)}
                 value={description}
-                // className={emptyFields.includes('description') ? 'error' : ''}
+                
             />
 
             <label>Status:</label>
@@ -67,7 +67,6 @@ const MachineUpdate = () => {
                 type="text"
                 onChange={(e) => setUpdatedStatus(e.target.value)}
                 value={status}
-                // className={emptyFields.includes('status') ? 'error' : ''}
             />
 
             <button type="submit">Update Machine</button>

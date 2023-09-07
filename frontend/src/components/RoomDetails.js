@@ -1,16 +1,24 @@
 import { useRoomContext } from '../hooks/useRoomContext'
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext'
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const RoomDetails = ({ room }) => {
   const { dispatch } = useRoomContext()
+  const  { user } = useAuthContext()
   const navigate = useNavigate()
 
   const handleDelete = async () => {
+    if(!user){
+      return
+    }
     const response = await fetch('/api/room/' + room._id, {
       method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
     })
     const json = await response.json()
 
@@ -20,6 +28,9 @@ const RoomDetails = ({ room }) => {
   }
 
   const handleUpdate = async () => {
+    if(!user){
+      return
+    }
     navigate('/room-update', {state: {room}})
   }
 

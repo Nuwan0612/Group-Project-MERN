@@ -1,16 +1,24 @@
 import { useMachinesContext } from "../hooks/useMachinesContext"
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext'
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const MachineDetails = ({ machine }) => {
     const { dispatch } = useMachinesContext()
+    const  { user } = useAuthContext()
     const navigate = useNavigate()
 
     const handleClick = async () => {
+        if(!user){
+            return
+        }
         const response = await fetch('/api/machines/' + machine._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
         const json = await response.json()
 
@@ -20,6 +28,9 @@ const MachineDetails = ({ machine }) => {
     }
 
     const handleUpdate = async () => {
+        if(!user){
+            return
+        }
         navigate('/machine-update', {state: {machine}})
     }
 

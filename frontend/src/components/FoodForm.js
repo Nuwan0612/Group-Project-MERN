@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useFoodContext } from "../hooks/useFoodContext";
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const FoodForm = () => {
-    const { dispatch } = useFoodContext();
+  const { dispatch } = useFoodContext();
+  const { user } = useAuthContext()
 
   const [Name, setName] = useState("");  
   const [Price, setPrice] = useState("");
@@ -14,14 +16,20 @@ const FoodForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if(!user) {
+      setError('You must be logged in')
+      return
+    }
+
     const food = { Name, Price, Type, Description };
 
     const response = await fetch("/api/foods", {
       method: "POST",
       body: JSON.stringify(food),
       headers: {
-        "Content-Type": "application/json",
-      },
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+      }
     });
     const json = await response.json();
 

@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { useMachinesContext } from '../hooks/useMachinesContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const MachineForm = () => {
     const { dispatch } = useMachinesContext()
+    const { user } = useAuthContext()
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -13,13 +15,19 @@ const MachineForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if(!user) {
+            setError('You must be logged in')
+            return
+        }
+
         const machine = {name, description, status}
 
         const response = await fetch('/api/machines', {
             method: 'POST',
             body: JSON.stringify(machine),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()

@@ -2,6 +2,8 @@ import { useReservationContext } from '../hooks/useReservationContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavigate } from 'react-router-dom'
 
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 const ReservationDetails = ({ reservation }) => {
   const { dispatch } = useReservationContext() 
   const  { user } = useAuthContext()
@@ -41,7 +43,7 @@ const ReservationDetails = ({ reservation }) => {
       <p><strong>Phone Number: </strong>{reservation.phone}</p>
       <p><strong>Members: </strong>{reservation.members}</p>
       <p><strong>Days: </strong>{reservation.days}</p>
-      <p><strong>Make reservation at: </strong>{reservation.createdAt}</p>
+      <p><strong>Make reservation at: </strong>{formatDistanceToNow(new Date(reservation.createdAt), {addSuffix: true})}</p>
       <span className="material-symbols-outlined" onClick={handleDelete}>delete</span>
       <button className="material-symbols-outlined" onClick={handleUpdate}>edit</button>
     </div>

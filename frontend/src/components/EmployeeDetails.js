@@ -1,16 +1,25 @@
 import { useEmployeeContext } from "../hooks/useEmployeeContext"
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext'
 
 //date-fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const EmployeeDetails = ({employee}) => {
     const {dispatch} = useEmployeeContext()
+    const  { user } = useAuthContext()
     const navigate = useNavigate()
 
     const handleDelete = async () => {
+        if(!user){
+            return
+        }
+
         const response = await fetch('/api/employee/' + employee._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
         const json = await response.json()
 
@@ -20,6 +29,9 @@ const EmployeeDetails = ({employee}) => {
     }
 
     const handleUpdate = async () => {
+        if(!user){
+            return
+          }
         navigate('/employee-update', {state: {employee}})
       }
 
