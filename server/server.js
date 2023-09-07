@@ -6,6 +6,7 @@ const userRoutes = require('./routes/user')
 const reservationRoutes = require('./routes/reservation')
 const employeeRoutes = require('./routes/employee')
 const foodRoutes = require('./routes/foods')
+const recordRoutes = require('./routes/room')
 
 const app = express()
 
@@ -22,6 +23,7 @@ app.use('/api/user', userRoutes)
 app.use('/api/reservation', reservationRoutes)
 app.use('/api/employee', employeeRoutes)
 app.use('/api/foods', foodRoutes)
+app.use('/api/room', recordRoutes)
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI)

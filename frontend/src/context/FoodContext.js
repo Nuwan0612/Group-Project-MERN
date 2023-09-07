@@ -18,12 +18,6 @@ export const FoodReducer = (state, action) => {
           (food) => food._id !== action.payload._id
         ),
       };
-    case "UPDATE_FOOD":
-      return {
-        foods: state.foods.map((food) =>
-          food._id === action.payload._id ? action.payload : food
-        ),
-      };
     default:
       return state;
   }

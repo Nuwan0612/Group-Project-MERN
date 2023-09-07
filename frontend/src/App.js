@@ -9,7 +9,10 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Update from './components/UpdateReservation'
 import Food from "./pages/Food";
-import FoodUpadte from './components/FoodUpdate'
+import FoodUpdate from './components/FoodUpdate'
+import RoomUpdate from './components/RoomUpdate'
+import Room from './pages/Room'
+
 
 function App() {
 
@@ -30,7 +33,15 @@ function App() {
             />
             <Route
               path="/food-update"
-              element={user ? <FoodUpadte /> : <Navigate to="/login" />}
+              element={user ? <FoodUpdate /> : <Navigate to="/login" />}
+            />
+            <Route 
+            path="/room"
+            element={user ? <Room /> : <Navigate to="/login" />}
+            />
+            <Route 
+            path="/room-update"
+            element={user ? <RoomUpdate /> : <Navigate to="/login" />}
             />
             <Route
               path="/employee"

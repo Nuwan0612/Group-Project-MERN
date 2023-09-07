@@ -38,9 +38,6 @@ const UpdateEmployee = () => {
       setUpdateError(json.error);
     }
     if (response.ok) {
-      console.log('Employee updated', json)
-     // dispatch({type: 'UPDATE_ITEM', payload: json})
-      
       navigate("/employee");
     }
     
@@ -49,7 +46,6 @@ const UpdateEmployee = () => {
   return (
     <form className="update" onSubmit={handleUpdate}>
       <h3>Update Employee </h3>
-      <p>{employee._id}</p>
        
       <label>Employee Name: </label>
       <input
