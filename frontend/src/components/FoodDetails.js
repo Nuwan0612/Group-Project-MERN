@@ -39,12 +39,8 @@ const FoodDetails = ({ food }) => {
         <strong>Description </strong>
         {food.Description}
       </p>
-      <button className="delete-btn" onClick={handleDelete}>
-        Delete
-      </button>
-      <button className="update-btn" onClick={handleUpdate}>
-        Update
-      </button>
+      <span className="material-symbols-outlined" onClick={handleDelete}>delete</span>
+      <button className="material-symbols-outlined" onClick={handleUpdate}>edit</button>
     </div>
   );
 };

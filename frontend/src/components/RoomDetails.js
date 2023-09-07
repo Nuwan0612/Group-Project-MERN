@@ -31,8 +31,8 @@ const RoomDetails = ({ room }) => {
       <p><strong>Air Conditioning  : </strong>{room.airConditioning}</p>
       <p><strong>Room Status : </strong>{room.roomStatus}</p>
       <p>{formatDistanceToNow(new Date(room.createdAt), { addSuffix: true })}</p>
-      <button className="delete-btn" onClick={handleDelete}>delete</button>
-      <button className="update-btn" onClick={handleUpdate}>update</button>
+      <span className="material-symbols-outlined" onClick={handleDelete}>delete</span>
+      <button className="material-symbols-outlined" onClick={handleUpdate}>edit</button>
     </div>
   )
 }

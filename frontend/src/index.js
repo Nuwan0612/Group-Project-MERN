@@ -7,6 +7,7 @@ import { EmployeeContextProvider } from './context/EmployeeContext';
 import { FoodContextProvider } from "./context/FoodContext";
 import { AuthContextProvider } from './context/AuthContext';
 import { RoomsContextProvider } from './context/RoomContext';
+import { MachinesContextProvider } from './context/MachineContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +17,9 @@ root.render(
         <EmployeeContextProvider>
           <FoodContextProvider>
             <RoomsContextProvider>
-              <App />
+              <MachinesContextProvider>
+                <App />
+              </MachinesContextProvider>
             </RoomsContextProvider>
           </FoodContextProvider>
         </EmployeeContextProvider>

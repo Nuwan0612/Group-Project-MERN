@@ -12,6 +12,8 @@ import Food from "./pages/Food";
 import FoodUpdate from './components/FoodUpdate'
 import RoomUpdate from './components/RoomUpdate'
 import Room from './pages/Room'
+import Gym from './pages/Gym'
+import MachineUpdate from './components/MachineUpdate'
 
 
 function App() {
@@ -36,12 +38,20 @@ function App() {
               element={user ? <FoodUpdate /> : <Navigate to="/login" />}
             />
             <Route 
-            path="/room"
-            element={user ? <Room /> : <Navigate to="/login" />}
+              path="/room"
+              element={user ? <Room /> : <Navigate to="/login" />}
             />
             <Route 
-            path="/room-update"
-            element={user ? <RoomUpdate /> : <Navigate to="/login" />}
+              path="/room-update"
+              element={user ? <RoomUpdate /> : <Navigate to="/login" />}
+            />
+            <Route 
+              path="/gym"
+              element={user ? <Gym /> : <Navigate to="/login" />}
+            />
+            <Route 
+              path="/machine-update"
+              element={user ? <MachineUpdate /> : <Navigate to="/login" />}
             />
             <Route
               path="/employee"

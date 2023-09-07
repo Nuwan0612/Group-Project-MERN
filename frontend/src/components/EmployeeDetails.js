@@ -30,8 +30,8 @@ const EmployeeDetails = ({employee}) => {
             <p><strong>Job: </strong>{employee.job}</p>
             <p><strong>Salary: </strong>{employee.salary}</p>
             <p>{formatDistanceToNow(new Date(employee.createdAt), {addSuffix: true})}</p>
-            <button className="delete-btn" onClick={handleDelete}>delete</button>
-            <button className="update-btn" onClick={handleUpdate}>update</button>
+            <span className="material-symbols-outlined" onClick={handleDelete}>delete</span>
+            <button className="material-symbols-outlined" onClick={handleUpdate}>edit</button>
         </div>
     )
 }
