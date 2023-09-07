@@ -42,8 +42,8 @@ const ReservationDetails = ({ reservation }) => {
       <p><strong>Members: </strong>{reservation.members}</p>
       <p><strong>Days: </strong>{reservation.days}</p>
       <p><strong>Make reservation at: </strong>{reservation.createdAt}</p>
-      <button className='delete-btn' onClick={handleDelete}>Delete</button>
-      <button className='update-btn' onClick={handleUpdate}>Update</button>
+      <span className="material-symbols-outlined" onClick={handleDelete}>delete</span>
+      <button className="material-symbols-outlined" onClick={handleUpdate}>edit</button>
     </div>
   )
 }
