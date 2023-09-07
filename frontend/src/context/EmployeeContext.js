@@ -16,10 +16,6 @@ export const employeeReducer = (state, action) => {
             return {
                 employees: state.employees.filter((employee) => employee._id !== action.payload._id)
             }
-        case 'UPDATE_ITEM':
-            return {
-                employees: state.employees.map(employee => employee._id === action.payload._id ? action.payload : employee)
-            }
         default:
             return state
     }
