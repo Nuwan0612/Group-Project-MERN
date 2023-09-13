@@ -7,7 +7,7 @@ import ResrvationDetails from "../components/ResrvationDetails"
 import Layout from "../components/Layout"
 import ReservationForm from '../components/ReservationForm'
 
-const Home = () => {
+const Resrvation = () => {
   const { reservations, dispatch } = useReservationContext()
   const {user} = useAuthContext()
 
@@ -19,7 +19,6 @@ const Home = () => {
         }
       })
       const json = await response.json()
-      console.log(json)
 
       if (response.ok) {
         dispatch({type: 'SET_RESERVATIONS', payload: json})
@@ -44,4 +43,5 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Resrvation
+

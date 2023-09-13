@@ -6,9 +6,11 @@ const {
   deleteFood,
   updateFood,
 } = require("../controllers/foodController");
+const requireAuth = require('../middleware/requireAuth')
 
 const router = express.Router();
 
+router.use(requireAuth)
 
 router.get('/', getFoods)
 

@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 
 //get all employees
 const getAllEmployees = async (req, res) => {
-    const employees = await Employee.find({}).sort({createdAt: -1})
+    const user_id = req.user._id
+    const employees = await Employee.find({user_id}).sort({createdAt: -1})
     res.status(200).json(employees)
 }
 
@@ -46,7 +47,8 @@ const createEmployee = async (req, res) => {
     }
 
     try{
-        const employee = await Employee.create({name, contact, job, salary})
+        const user_id = req.user._id
+        const employee = await Employee.create({name, contact, job, salary, user_id})
         res.status(200).json(employee)
         
     } catch (error){

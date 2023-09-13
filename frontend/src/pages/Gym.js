@@ -1,5 +1,6 @@
 import { useEffect }from 'react'
 import { useMachinesContext } from '../hooks/useMachinesContext'
+import { useAuthContext } from "../hooks/useAuthContext"
 
 // components
 import MachineDetails from '../components/MachineDetails'
@@ -8,10 +9,15 @@ import MachineForm from '../components/MachineForm'
 
 const Home = () => {
     const {machines, dispatch} = useMachinesContext()
+    const {user} = useAuthContext()
 
     useEffect(() => {
         const fetchMachines = async () => {
-            const response = await fetch('/api/machines')
+            const response = await fetch('/api/machines', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if (response.ok) {
@@ -19,8 +25,10 @@ const Home = () => {
             }
         }
 
-        fetchMachines()
-    }, [dispatch])
+        if(user){
+            fetchMachines()
+          } 
+    }, [dispatch, user])
 
     return (
         <Layout>

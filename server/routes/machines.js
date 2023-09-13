@@ -6,9 +6,11 @@ const {
     deleteMachine,
     updateMachine
 } = require('../controllers/machineController')
+const requireAuth = require('../middleware/requireAuth')
 
 const router = express.Router()
 
+router.use(requireAuth)
 // GET all machines
 router.get('/', getMachines)
 

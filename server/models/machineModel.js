@@ -14,6 +14,10 @@ const machineSchema = new Schema({
     status: {
         type: String,
         required: true
+    },
+    user_id: {
+        type: String,
+        required: true
     }
 }, { timestamps: true })
 

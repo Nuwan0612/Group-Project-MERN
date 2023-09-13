@@ -14,7 +14,7 @@ const EmployeeDetails = ({employee}) => {
         if(!user){
             return
         }
-
+        console.log(user.token)
         const response = await fetch('/api/employee/' + employee._id, {
             method: 'DELETE',
             headers: {

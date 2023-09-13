@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useFoodContext } from "../hooks/useFoodContext";
+import { useAuthContext } from "../hooks/useAuthContext"
 
 // components
 import FoodDetails from "../components/FoodDetails";
@@ -8,21 +9,29 @@ import FoodForm from "../components/FoodForm";
 
 const Food = () => {
   const { foods, dispatch } = useFoodContext();
+  const {user} = useAuthContext()
 
   useEffect(() => {
     const fetchFood = async () => {
-      const response = await fetch("/api/foods");
+      const response = await fetch("/api/foods", {
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
       const json = await response.json();
-      console.log(json);
 
       if (response.ok) {
         dispatch({ type: "SET_FOODS", payload: json });
       }
     };
 
-    fetchFood();
+    if(user){
+      fetchFood();
+    }
+
     
-  }, [dispatch]);
+    
+  }, [dispatch, user]);
 
   return (
     <Layout>

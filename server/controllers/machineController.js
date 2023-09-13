@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 
 //get all machines
 const getMachines = async (req, res) => {
-    const machines = await Machine.find({}).sort({createdAt: -1})
+    const user_id = req.user._id
+    const machines = await Machine.find({user_id}).sort({createdAt: -1})
 
     res.status(200).json(machines)
 }
@@ -46,7 +47,8 @@ const createMachine = async (req, res) => {
 
     // add doc to DB
     try {
-        const machine  = await Machine.create({name, description, status})
+        const user_id = req.user._id
+        const machine  = await Machine.create({name, description, status,user_id})
         res.status(200).json(machine)
     }catch(error) {
         res.status(400).json({error: error.message})

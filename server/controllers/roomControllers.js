@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 
 // get all rooms
 const getRooms = async (req, res) => {
-    const rooms = await Rooms.find({}).sort({createdAt: -1})
+    const user_id = req.user._id
+    const rooms = await Rooms.find({user_id}).sort({createdAt: -1})
     res.status(200).json(rooms)
 }
 
@@ -50,7 +51,8 @@ const createRoom = async (req, res) => {
 
     // add to db
     try {
-        const room = await Rooms.create({ roomNo, roomType, roomRates, airConditioning, roomStatus });
+        const user_id = req.user._id
+        const room = await Rooms.create({ roomNo, roomType, roomRates, airConditioning, roomStatus, user_id });
         res.status(200).json(room);
     } catch (error) {
         res.status(400).json({ error: error.message });

@@ -8,6 +8,9 @@ const {
     deleteEmployee,
     updateEmployee
 } = require('../controllers/employeeController')
+const requireAuth = require('../middleware/requireAuth')
+
+router.use(requireAuth)
 
 //Get all items
 router.get('/', getAllEmployees)
